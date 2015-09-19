@@ -99,15 +99,17 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="176dp"
+            android:layout_height="84dp"
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/editText"
             android:layout_gravity="center_horizontal"
-            android:text="   Help me out!"
+            android:text="If I am sending you this message, that means I am in trouble."
             android:background="#ffffff"
             android:autoText="false"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" />
 
         <ImageView
             android:layout_width="wrap_content"

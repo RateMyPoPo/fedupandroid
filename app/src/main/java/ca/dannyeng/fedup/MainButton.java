@@ -19,6 +19,7 @@ import android.util.Log;
 
 
 
+
 public class MainButton extends AppCompatActivity {
     private MediaRecorder mRecorder;
     private Boolean record = true;
@@ -28,8 +29,11 @@ public class MainButton extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button);
 
+
+
+
         //title button that brings you to the settings page
-        Button pushsettingbutton = (Button)findViewById(R.id.settingbutton);
+        Button pushsettingbutton = (Button) findViewById(R.id.settingbutton);
 
         pushsettingbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,12 +98,15 @@ public class MainButton extends AppCompatActivity {
         //});
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_button, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -10,9 +10,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
+        android:text="Setting"
         android:id="@+id/settingbutton"
-        android:background="#96a29b98"
+        android:background="#b6807771"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -22,17 +22,30 @@
         android:layout_height="wrap_content"
         android:id="@+id/startbutton"
         android:background="@drawable/buttonbutton"
-        android:layout_centerVertical="true"
+        android:layout_above="@+id/settingbutton"
         android:layout_toLeftOf="@+id/settingbutton"
-        android:layout_toStartOf="@+id/settingbutton" />
+        android:layout_toStartOf="@+id/settingbutton"
+        android:layout_marginBottom="67dp" />
 
     <Chronometer
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/chronometer"
         android:textSize="50dp"
-        android:layout_above="@+id/startbutton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="57dp" />
+        android:layout_marginTop="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit to Dropbox"
+        android:id="@+id/button"
+        android:layout_below="@+id/startbutton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#b6807771"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp" />
 
 </RelativeLayout>
