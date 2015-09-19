@@ -12,6 +12,7 @@ import android.media.MediaRecorder;
 import java.io.IOException;
 import android.widget.Toast;
 import android.os.Environment;
+import android.media.MediaPlayer;
 import android.util.Log;
 
 public class MainButton extends AppCompatActivity {
@@ -28,7 +29,7 @@ public class MainButton extends AppCompatActivity {
         pushsettingbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i2 = new Intent(getApplicationContext(), Settings.class);
+                Intent i2 = new Intent(getApplicationContext(), Upload.class);
                 startActivity(i2);
             }
         });
@@ -45,16 +46,14 @@ public class MainButton extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), text, duration);
                 toast.show();
 
-                String mFileName = "/test_";
+                String mFileName = "test123.mp4";
                 if(record){
                     mRecorder = new MediaRecorder();
                     mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
                     mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-                    Log.e("LINK", Environment.getExternalStorageDirectory().getAbsolutePath()
-                            + mFileName + System.currentTimeMillis());
-                    mRecorder.setOutputFile(Environment.getExternalStorageDirectory().getAbsolutePath()
-                            + mFileName +  System.currentTimeMillis());
-                    mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+                    Log.e("LINK", "/sdcard/" + mFileName);
+                    mRecorder.setOutputFile("/sdcard/" + mFileName);
+                    mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.HE_AAC);
 
                     try {
                         mRecorder.prepare();
