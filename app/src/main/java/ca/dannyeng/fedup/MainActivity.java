@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // Start main activity
-            Intent intent = new Intent(MainActivity.this, MainButton.class);
+            Intent intent = new Intent(MainActivity.this, login.class);
             MainActivity.this.startActivity(intent);
             MainActivity.this.finish();
 
