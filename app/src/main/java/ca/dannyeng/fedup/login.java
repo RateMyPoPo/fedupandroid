@@ -8,17 +8,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class Settings extends AppCompatActivity {
+public class login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_login);
+
 
         //title button that brings you to the settings page
-        Button pushsavebutton = (Button)findViewById(R.id.savebutton);
+        Button pushenterbutton = (Button)findViewById(R.id.enterbutton);
 
-        pushsavebutton.setOnClickListener(new View.OnClickListener() {
+        pushenterbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i2 = new Intent(getApplicationContext(), MainButton.class);
@@ -30,7 +31,7 @@ public class Settings extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        getMenuInflater().inflate(R.menu.menu_login, menu);
         return true;
     }
 
