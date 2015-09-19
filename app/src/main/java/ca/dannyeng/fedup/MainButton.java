@@ -13,17 +13,22 @@ import android.widget.Button;
 
 
 
+
 public class MainButton extends AppCompatActivity {
 
-    //final Chronometer chrono = (Chronometer)findViewById(R.id.chronometer);
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button);
 
+
+
+
         //title button that brings you to the settings page
-        Button pushsettingbutton = (Button)findViewById(R.id.settingbutton);
+        Button pushsettingbutton = (Button) findViewById(R.id.settingbutton);
 
         pushsettingbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,18 +38,9 @@ public class MainButton extends AppCompatActivity {
             }
         });
 
-
-        //title button that brings you to the settings page
-        //ImageButton pushstartbutton = (ImageButton)findViewById(R.id.startbutton);
-
-        //pushstartbutton.setOnClickListener(new View.OnClickListener() {
-           // @Override
-           // public void onClick(View v) {
-                //chrono.setBase(SystemClock.elapsedRealtime());
-               // chrono.start();
-           // }
-        //});
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,6 +48,7 @@ public class MainButton extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_button, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
