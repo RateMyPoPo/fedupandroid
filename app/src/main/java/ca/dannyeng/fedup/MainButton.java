@@ -40,19 +40,19 @@ public class MainButton extends AppCompatActivity {
         });
 
         //audio record button
-        ImageButton recordButton = (ImageButton)findViewById(R.id.imageButton);
+        ImageButton recordButton = (ImageButton)findViewById(R.id.startbutton);
 
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CharSequence text = "Hello toast!";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-                toast.show();
 
                 String mFileName = "test123.mp4";
                 if(record){
+                    CharSequence text = "Recording started";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                    toast.show();
+
                     mRecorder = new MediaRecorder();
                     mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
                     mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
@@ -68,11 +68,14 @@ public class MainButton extends AppCompatActivity {
 
                     mRecorder.start();
                 } else {
+                    CharSequence text = "Recording stopped";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                    toast.show();
                     mRecorder.stop();
                     mRecorder.reset();
                     mRecorder.release();
                     mRecorder = null;
-                    Log.e("AUDIO", "Record stopped");
                 }
                 record = !record;
 

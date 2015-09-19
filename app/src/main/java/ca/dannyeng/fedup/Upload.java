@@ -1,6 +1,9 @@
 package ca.dannyeng.fedup;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,9 +23,30 @@ import com.dropbox.client2.DropboxAPI.Entry;
 import com.dropbox.client2.session.AppKeyPair;
 import com.dropbox.client2.exception.DropboxException;
 import com.dropbox.client2.exception.DropboxUnlinkedException;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Upload extends AppCompatActivity {
     final static private String APP_KEY = "ozpikev4q244m1o";
@@ -76,6 +100,8 @@ public class Upload extends AppCompatActivity {
 
                 new UploadFilesTask().execute("test123.mp4");
 
+                Log.e("FILE UPLOAD", "completed");
+
             } catch (IllegalStateException e) {
                 Log.i("DbAuthLog", "Error authenticating", e);
             }
@@ -88,24 +114,62 @@ public class Upload extends AppCompatActivity {
             File tmpFile = new File("/sdcard/", file_name[0]);
 
             try {
+                //global variables
+                MyApp mApp = ((MyApp)getApplication());
+
+                //File upload
                 FileInputStream fis = new FileInputStream(tmpFile);
                 Entry newEntry = mDBApi.putFile(file_name[0], fis, tmpFile.length(), null, null);
                 fis.close();
+
+                //get Geolocation
+                LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                String locationProvider = LocationManager.NETWORK_PROVIDER;
+                Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+
+                //get Timestamp
+                long unixTime = System.currentTimeMillis() / 1000L;
+
+                //store data
+                HttpClient client = new DefaultHttpClient();
+                HttpPost httpPost = new HttpPost("http://52.88.98.2/index.php?_url=/interaction/");
+                JSONObject data = new JSONObject();
+                data.put("username", mApp.getUsername());
+                data.put("file_name", file_name[0]);
+                data.put("longitude", Double.toString(lastKnownLocation.getLongitude()));
+                data.put("latitude", Double.toString(lastKnownLocation.getLatitude()));
+                data.put("timestamp", unixTime);
+
+                StringEntity se = new StringEntity(data.toString());
+
+                //Encoding POST data
+                httpPost.setEntity(se);
+
+                //Headers
+                httpPost.setHeader("Accept", "application/json");
+                httpPost.setHeader("Content-type", "application/json");
+
+                HttpResponse response = client.execute(httpPost);
+                // write response to log
+                Log.d("Http Post Response:", response.toString());
+
             } catch (DropboxUnlinkedException e) {
                 Log.e("DbExampleLog", "User has unlinked.");
             } catch (DropboxException e) {
                 Log.e("DbExampleLog", "Something went wrong while uploading.");
-            } catch (FileNotFoundException e){
+            } catch (FileNotFoundException e) {
                 Log.e("FILE IO", "file not found:"+e);
             } catch (IOException e){
                 Log.e("FILE IO", "io exception: "+e);
+            } catch (JSONException e){
+                e.printStackTrace();
             }
             return 0l;
         }
 
 
         protected void onPostExecute(Long result) {
-            Log.e("FILE UPLOAD", "completed");
+
         }
     }
 
