@@ -8,9 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Button;
+import android.media.MediaRecorder;
+import java.io.IOException;
+import android.widget.Toast;
+import android.os.Environment;
+import android.util.Log;
 
 public class MainButton extends AppCompatActivity {
-
+    private MediaRecorder mRecorder;
+    private Boolean record = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +30,48 @@ public class MainButton extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i2 = new Intent(getApplicationContext(), Settings.class);
                 startActivity(i2);
+            }
+        });
+
+        //audio record button
+        ImageButton recordButton = (ImageButton)findViewById(R.id.imageButton);
+
+        recordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text = "Hello toast!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                toast.show();
+
+                String mFileName = "/test_";
+                if(record){
+                    mRecorder = new MediaRecorder();
+                    mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+                    mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+                    Log.e("LINK", Environment.getExternalStorageDirectory().getAbsolutePath()
+                            + mFileName + System.currentTimeMillis());
+                    mRecorder.setOutputFile(Environment.getExternalStorageDirectory().getAbsolutePath()
+                            + mFileName +  System.currentTimeMillis());
+                    mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+                    try {
+                        mRecorder.prepare();
+                    } catch (IOException e) {
+                        Log.e("AUDIO_RECORD", "prepare() failed");
+                    }
+
+                    mRecorder.start();
+                } else {
+                    mRecorder.stop();
+                    mRecorder.reset();
+                    mRecorder.release();
+                    mRecorder = null;
+                    Log.e("AUDIO", "Record stopped");
+                }
+                record = !record;
+
             }
         });
     }
