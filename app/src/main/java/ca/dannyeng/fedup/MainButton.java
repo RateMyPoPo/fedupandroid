@@ -1,15 +1,21 @@
 package ca.dannyeng.fedup;
 
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.Button;
 
+
+
 public class MainButton extends AppCompatActivity {
+
+    //final Chronometer chrono = (Chronometer)findViewById(R.id.chronometer);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,18 @@ public class MainButton extends AppCompatActivity {
                 startActivity(i2);
             }
         });
+
+
+        //title button that brings you to the settings page
+        //ImageButton pushstartbutton = (ImageButton)findViewById(R.id.startbutton);
+
+        //pushstartbutton.setOnClickListener(new View.OnClickListener() {
+           // @Override
+           // public void onClick(View v) {
+                //chrono.setBase(SystemClock.elapsedRealtime());
+               // chrono.start();
+           // }
+        //});
     }
 
     @Override

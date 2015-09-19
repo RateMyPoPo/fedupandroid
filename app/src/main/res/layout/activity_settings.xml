@@ -14,7 +14,8 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         android:orientation="vertical"
         android:fillViewport="true"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:background="@drawable/backgroundtwo">
 
         <TextView
             android:layout_width="wrap_content"
@@ -230,7 +231,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"
-            android:id="@+id/button"
+            android:id="@+id/savebutton"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>

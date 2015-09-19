@@ -1,9 +1,12 @@
 package ca.dannyeng.fedup;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class Settings extends AppCompatActivity {
 
@@ -11,6 +14,17 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        //title button that brings you to the settings page
+        Button pushsavebutton = (Button)findViewById(R.id.savebutton);
+
+        pushsavebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i2 = new Intent(getApplicationContext(), MainButton.class);
+                startActivity(i2);
+            }
+        });
     }
 
     @Override
