@@ -6,6 +6,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -134,7 +135,6 @@ public class Upload extends AppCompatActivity {
                 long unixTime = System.currentTimeMillis() / 1000L;
                 firebase.child("3").child("timestamp").setValue(unixTime);
 
-
                 //store data
                 HttpClient client = new DefaultHttpClient();
                 HttpPost httpPost = new HttpPost("http://52.88.98.2/index.php?_url=/interaction/");
@@ -144,7 +144,6 @@ public class Upload extends AppCompatActivity {
                 data.put("longitude", Double.toString(lastKnownLocation.getLongitude()));
                 data.put("latitude", Double.toString(lastKnownLocation.getLatitude()));
                 data.put("timestamp", unixTime);
-
                 StringEntity se = new StringEntity(data.toString());
 
                 //Encoding POST data
@@ -155,7 +154,7 @@ public class Upload extends AppCompatActivity {
                 httpPost.setHeader("Content-type", "application/json");
 
                 HttpResponse response = client.execute(httpPost);
-
+                sendSMS("6138180682", "HELP!!!");
 
             } catch (DropboxUnlinkedException e) {
                 Log.e("DbExampleLog", "User has unlinked.");
@@ -180,6 +179,11 @@ public class Upload extends AppCompatActivity {
     private void loggedIn() {
         Intent i2 = new Intent(getApplicationContext(), MainButton.class);
         startActivity(i2);
+    }
+
+    private void sendSMS(String phoneNumber, String message) {
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(phoneNumber, null, message, null, null);
     }
 
 }
