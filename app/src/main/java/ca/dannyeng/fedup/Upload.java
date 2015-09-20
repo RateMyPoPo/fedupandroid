@@ -23,6 +23,7 @@ import com.dropbox.client2.DropboxAPI.Entry;
 import com.dropbox.client2.session.AppKeyPair;
 import com.dropbox.client2.exception.DropboxException;
 import com.dropbox.client2.exception.DropboxUnlinkedException;
+import com.firebase.client.Firebase;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -56,6 +57,7 @@ public class Upload extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_button);
 
         AppKeyPair appKeys = new AppKeyPair(APP_KEY, APP_SECRET);
@@ -95,12 +97,9 @@ public class Upload extends AppCompatActivity {
                 mDBApi.getSession().finishAuthentication();
 
                 String accessToken = mDBApi.getSession().getOAuth2AccessToken();
+                MyApp mApp = ((MyApp)getApplication());
 
-                Log.e("DROPBOX", "access granted");
-
-                new UploadFilesTask().execute("test123.mp4");
-
-                Log.e("FILE UPLOAD", "completed");
+                new UploadFilesTask().execute(mApp.getFilename());
 
             } catch (IllegalStateException e) {
                 Log.i("DbAuthLog", "Error authenticating", e);
@@ -111,24 +110,30 @@ public class Upload extends AppCompatActivity {
     private class UploadFilesTask extends AsyncTask<String, Integer, Long> {
         protected Long doInBackground(String... file_name) {
             Log.e("FILE", file_name[0]);
-            File tmpFile = new File("/sdcard/", file_name[0]);
+            File tmpFile = new File("/storage/sdcard0/", file_name[0]);
 
             try {
                 //global variables
                 MyApp mApp = ((MyApp)getApplication());
+                Firebase firebase = new Firebase("https://fedup.firebaseio.com/");
 
                 //File upload
                 FileInputStream fis = new FileInputStream(tmpFile);
                 Entry newEntry = mDBApi.putFile(file_name[0], fis, tmpFile.length(), null, null);
                 fis.close();
+                firebase.child("3").child("file_name").setValue(file_name[0]);
 
                 //get Geolocation
                 LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                 String locationProvider = LocationManager.NETWORK_PROVIDER;
                 Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+                firebase.child("3").child("longitude").setValue(lastKnownLocation.getLongitude());
+                firebase.child("3").child("latitude").setValue(lastKnownLocation.getLatitude());
 
                 //get Timestamp
                 long unixTime = System.currentTimeMillis() / 1000L;
+                firebase.child("3").child("timestamp").setValue(unixTime);
+
 
                 //store data
                 HttpClient client = new DefaultHttpClient();
@@ -150,8 +155,7 @@ public class Upload extends AppCompatActivity {
                 httpPost.setHeader("Content-type", "application/json");
 
                 HttpResponse response = client.execute(httpPost);
-                // write response to log
-                Log.d("Http Post Response:", response.toString());
+
 
             } catch (DropboxUnlinkedException e) {
                 Log.e("DbExampleLog", "User has unlinked.");
@@ -169,8 +173,13 @@ public class Upload extends AppCompatActivity {
 
 
         protected void onPostExecute(Long result) {
-
+            loggedIn();
         }
+    }
+
+    private void loggedIn() {
+        Intent i2 = new Intent(getApplicationContext(), MainButton.class);
+        startActivity(i2);
     }
 
 }

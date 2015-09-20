@@ -93,11 +93,17 @@ public class login extends AppCompatActivity {
             public void onClick(View v) {
                 EditText usernameET = (EditText) findViewById(R.id.editText2);
                 String username = usernameET.getText().toString();
+                if(username.equals("")){
+                    loggedIn();
+                    return;
+                }
 
                 EditText passwordET = (EditText) findViewById(R.id.editText3);
                 String password = passwordET.getText().toString();
 
                 new LoginTask().execute(username, password);
+
+                loggedIn();
             }
         });
     }
@@ -137,6 +143,7 @@ public class login extends AppCompatActivity {
                     //Successful login
                     MyApp mApp = ((MyApp)getApplication());
                     mApp.setUsername(user.get("username").toString());
+                    mApp.setId(user.get("id").toString());
                     return 0l;
                 } else {
                     //Invalid credentials

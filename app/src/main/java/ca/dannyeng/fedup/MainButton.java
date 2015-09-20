@@ -1,5 +1,6 @@
 package ca.dannyeng.fedup;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,12 @@ import android.os.Environment;
 import android.media.MediaPlayer;
 import android.util.Log;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.UUID;
 
+
+import com.firebase.client.Firebase;
 
 
 public class MainButton extends AppCompatActivity {
@@ -27,19 +33,26 @@ public class MainButton extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_button);
-
-
-
 
         //title button that brings you to the settings page
         Button pushsettingbutton = (Button) findViewById(R.id.settingbutton);
-
         pushsettingbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i2 = new Intent(getApplicationContext(), Upload.class);
+                Intent i2 = new Intent(getApplicationContext(), Settings.class);
                 startActivity(i2);
+            }
+        });
+
+        //submit to dropbox button
+        Button dropboxbutton = (Button) findViewById(R.id.button);
+        dropboxbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i3 = new Intent(getApplicationContext(), Upload.class);
+                startActivity(i3);
             }
         });
 
@@ -50,19 +63,22 @@ public class MainButton extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String mFileName = "test123.mp4";
                 if(record){
                     CharSequence text = "Recording started";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(getApplicationContext(), text, duration);
                     toast.show();
-
+                    SecureRandom random = new SecureRandom();
+                    String uuid = new BigInteger(130, random).toString(32);
+                    String mFileName = uuid+"_test.3gp";
+                    MyApp mApp = ((MyApp)getApplication());
+                    mApp.setFilename(mFileName);
                     mRecorder = new MediaRecorder();
                     mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-                    mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-                    Log.e("LINK", "/sdcard/" + mFileName);
-                    mRecorder.setOutputFile("/sdcard/" + mFileName);
-                    mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.HE_AAC);
+                    mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+                    Log.e("LINK", "/storage/sdcard0/" + mFileName);
+                    mRecorder.setOutputFile("/storage/sdcard0/" + mFileName);
+                    mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
 
                     try {
                         mRecorder.prepare();
