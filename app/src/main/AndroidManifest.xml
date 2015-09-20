@@ -36,6 +36,14 @@
             android:name=".login"
             android:label="@string/title_activity_login" >
         </activity>
+        <activity
+            android:name=".GifMovieView"
+            android:label="@string/title_activity_gif_movie_view" >
+        </activity>
+        <activity
+            android:name=".GifView"
+            android:label="@string/title_activity_gif_view" >
+        </activity>
     </application>
 
 </manifest>

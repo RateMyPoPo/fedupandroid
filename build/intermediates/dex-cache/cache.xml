@@ -2,32 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/classes.jar"
+        jar="/Users/dannyeng/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.6.1/86b122e640af09b0723e1fa44083c354ba6d9089/glide-3.6.1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
-        <dex dex="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/pre-dexed/debug/classes-b24ffb5a90660f9dd7502ff4da9bc0cb6e89ec4a.jar" />
-    </item>
-    <item
-        jar="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
-        <dex dex="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/pre-dexed/debug/classes-282d12c8bae3bb726188076acc265d82d48f987f.jar" />
-    </item>
-    <item
-        jar="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/libs/internal_impl-22.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
-        <dex dex="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-79ec8a2b29394bb3d8f6230b2cc661b214783baf.jar" />
-    </item>
-    <item
-        jar="/Users/dannyeng/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
-        <dex dex="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-d123d8c314a1cf3fc283e2c974cb2a514133e2e0.jar" />
+        sha1="86b122e640af09b0723e1fa44083c354ba6d9089">
+        <dex dex="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/pre-dexed/debug/glide-3.6.1-1228930790d087c1dc045f33ad4ee0a347db24e2.jar" />
     </item>
 
 </items>

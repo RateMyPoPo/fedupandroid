@@ -10,19 +10,50 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.Button;
+import android.widget.TextView;
+import com.bumptech.glide.Glide;
 
-
+import java.io.File;
 
 
 public class MainButton extends AppCompatActivity {
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button);
+
+        final Chronometer myChronometer = (Chronometer)findViewById(R.id.chronometer);
+        ImageButton buttonstart = (ImageButton)findViewById(R.id.buttonstart);
+        Button buttonStop = (Button)findViewById(R.id.buttonstop);
+
+        /*
+        File file = new File("dopedpg.gif");
+        String filePath = file.getAbsolutePath();
+
+        ImageButton buttonGif = (ImageButton) findViewById(R.id.gif_button);
+        Glide.with(this).load("http://imgur.com/LJVyRHm").into(buttonGif);
+*/
+        buttonstart.setOnClickListener(new Button.OnClickListener(){
+
+
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                myChronometer.setBase(SystemClock.elapsedRealtime());
+                myChronometer.start();
+            }
+        });
+
+        buttonStop.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                myChronometer.stop();
+
+            }});
 
 
 
