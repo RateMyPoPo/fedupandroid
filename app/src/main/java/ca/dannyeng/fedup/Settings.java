@@ -67,9 +67,6 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-        EditText personal_message = (EditText)findViewById(R.id.editText);
-
-
         //title button that brings you to the settings page
         Button pushsavebutton = (Button)findViewById(R.id.savebutton);
 

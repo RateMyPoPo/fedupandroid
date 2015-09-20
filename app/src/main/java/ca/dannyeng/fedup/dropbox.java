@@ -8,10 +8,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
-public class dropbox extends AppCompatActivity {
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
+public class dropbox extends AppCompatActivity {
+    public String personal_message;
+    public String ec1Phone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +34,31 @@ public class dropbox extends AppCompatActivity {
             }
         });
 
-        Button emergencyButton = (Button) findViewById(R.id.emergencybutton);
+        MyApp mApp = ((MyApp)getApplication());
+        Firebase firebase = new Firebase("https://fedup.firebaseio.com/"+mApp.getId());
+
+        firebase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                personal_message = snapshot.child("personal_message").getValue().toString();
+                ec1Phone = snapshot.child("ec1_phone").getValue().toString();
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                //System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        });
+
+        Button emergencyButton = (Button)findViewById(R.id.emergencybutton);
         emergencyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendSMS("6138180682", "YOOO HELP A BROTHA OUT!");
+                sendSMS(ec1Phone, personal_message);
             }
         });
+
     }
 
     @Override

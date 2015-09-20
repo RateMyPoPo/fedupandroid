@@ -156,8 +156,6 @@ public class Upload extends AppCompatActivity {
                 firebase.child(mApp.getId()).child("latitude").setValue(lastKnownLocation.getLatitude());
                 firebase.child(mApp.getId()).child("timestamp").setValue(unixTime);
 
-
-
             } catch (DropboxUnlinkedException e) {
                 Log.e("DbExampleLog", "User has unlinked.");
             } catch (DropboxException e) {
