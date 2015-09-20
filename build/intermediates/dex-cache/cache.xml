@@ -2,6 +2,7 @@
 <items version="2" >
 
     <item
+<<<<<<< HEAD
         jar="/Users/dannyeng/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -21,6 +22,98 @@
         revision="22.0.1"
         sha1="e3d5f6ab2003e31f2cf5ea61b4731a21e9517935">
         <dex dex="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/pre-dexed/debug/androidasync-2.1.6-31f9f51b314e5bee00a49dfb320f7050a1cbc74e.jar" />
+=======
+<<<<<<< HEAD
+        jar="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/libs/internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-7d9b600c827a48e876006442e4f7a6bfdc3d2b2f.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.2-897371b4483ebdd2d2a96f6e641f653580533d94.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.3.1/4d53b7d6983247af02b8fe7e4228fff555a5e828/firebase-client-jvm-2.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4d53b7d6983247af02b8fe7e4228fff555a5e828">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/firebase-client-jvm-2.3.1-e5d533cdd18262617f95de3bf90e28eb6a38d03e.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.11/d37cb67277928cf59344b4196af8d9cee1f1a27c/tubesock-0.0.11.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d37cb67277928cf59344b4196af8d9cee1f1a27c">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/tubesock-0.0.11-96c6901bb11522862c6ce94b92398ed7dc50dda5.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/FedUp/fedupandroid/app/libs/json_simple-1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5e303a03d04e6788dddfa3655272580ae0fc13bb">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/json_simple-1.1-c4ae47d09f20efc5ab53c4d62b301f34a858b969.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/classes-cf46177f554268ec40e435a7200ee35f1778de9d.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.3.1/be29b24233711c419ce935aa0a1b12ebc49d1c9a/firebase-client-android-2.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="be29b24233711c419ce935aa0a1b12ebc49d1c9a">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/firebase-client-android-2.3.1-90e8df03e5930d23a0173deaf15f9e201d905395.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.2-75c720fb4a17253c2d564bdae02d23003bdad025.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/classes-589d4422970cdbc409e2f34b81a509edac0a0afc.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-2fc32974bc6dabe73b5a51cfa9a9f755d2307c52.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/FedUp/fedupandroid/app/libs/dropbox-android-sdk-1.6.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="986e7a58e925c6f91b88ae8d3224a0550b65acc7">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/dropbox-android-sdk-1.6.3-69565138879544691533a45f49db55f6e4664fe4.jar" />
+    </item>
+    <item
+        jar="/Users/Kevin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2-f7f493924ce461c8b2fd190d901d5efc3e884cd9.jar" />
+=======
+        jar="/Users/dannyeng/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.6.1/86b122e640af09b0723e1fa44083c354ba6d9089/glide-3.6.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="86b122e640af09b0723e1fa44083c354ba6d9089">
+        <dex dex="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/pre-dexed/debug/glide-3.6.1-1228930790d087c1dc045f33ad4ee0a347db24e2.jar" />
+>>>>>>> master
+>>>>>>> master/develop
     </item>
 
 </items>
