@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ca.dannyeng.fedup" >
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@drawable/feduplogo"
         android:keepScreenOn="true"
         android:label="Fed Up"
         android:screenOrientation="portrait"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
-        android:name=".MyApp">
+        android:theme="@style/Theme.AppCompat.NoActionBar" >
         <activity
             android:name=".MainActivity"
             android:keepScreenOn="true"
@@ -44,21 +46,27 @@
         </activity>
         <activity
             android:name=".Upload"
-            android:label="@string/title_activity_settings"
             android:keepScreenOn="true"
-            android:screenOrientation="portrait">
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.dropbox.client2.android.AuthActivity"
-            android:launchMode="singleTask"
-            android:configChanges="orientation|keyboard">
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask" >
             <intent-filter>
                 <data android:scheme="db-ozpikev4q244m1o" />
+
                 <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".dropbox"
+            android:label="@string/title_activity_dropbox" >
+        </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
 </manifest>

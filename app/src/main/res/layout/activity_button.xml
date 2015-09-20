@@ -36,18 +36,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit to Dropbox"
-        android:id="@+id/button"
-        android:background="#b6807771"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_alignTop="@+id/settingbutton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
 
     <!--
     <ImageView

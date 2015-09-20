@@ -18,13 +18,14 @@ import android.widget.Toast;
 import android.os.Environment;
 import android.media.MediaPlayer;
 import android.util.Log;
+import android.content.Intent;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.UUID;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
-import com.koushikdutta.ion.Ion;
+
 
 import android.widget.ImageView;
 
@@ -58,10 +59,10 @@ public class MainButton extends AppCompatActivity {
 
         ImageButton buttonstart = (ImageButton) findViewById(R.id.buttonstart);
         Glide.with(this).load("http://i.imgur.com/LJVyRHm.gif").into(buttonstart);
-        buttonstart.setOnClickListener(new Button.OnClickListener() {
+       /* buttonstart.setOnClickListener(new Button.OnClickListener() {
 
 
-            @Override
+           ) @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 if (!timerStarted) {
@@ -77,7 +78,7 @@ public class MainButton extends AppCompatActivity {
                 }
 
             }
-        });
+        });*/
 
         //title button that brings you to the settings page
         Button pushsettingbutton = (Button) findViewById(R.id.settingbutton);
@@ -90,14 +91,14 @@ public class MainButton extends AppCompatActivity {
         });
 
         //submit to dropbox button
-        Button dropboxbutton = (Button) findViewById(R.id.button);
+       /* Button dropboxbutton = (Button) findViewById(R.id.button);
         dropboxbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i3 = new Intent(getApplicationContext(), Upload.class);
                 startActivity(i3);
             }
-        });
+        });*/
 
         //audio record button
         ImageButton recordButton = (ImageButton)findViewById(R.id.buttonstart);
@@ -105,6 +106,18 @@ public class MainButton extends AppCompatActivity {
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (!timerStarted) {
+                    myChronometer.setBase(SystemClock.elapsedRealtime());
+                    myChronometer.start();
+                    timerStarted = true;
+                }
+                else {
+
+                    myChronometer.stop();
+                    timerStarted = false;
+
+                }
 
                 if(record){
                     CharSequence text = "Recording started";
@@ -139,10 +152,15 @@ public class MainButton extends AppCompatActivity {
                     mRecorder.reset();
                     mRecorder.release();
                     mRecorder = null;
+
+                    // Start main activity
+                    Intent intent = new Intent(MainButton.this, dropbox.class);
+                    MainButton.this.startActivity(intent);
                 }
                 record = !record;
 
             }
+
         });
 
         //title button that brings you to the settings page
