@@ -17,7 +17,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-
+<!--
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:background="@drawable/buttonbutton"
         android:layout_above="@+id/buttonstop"
         android:layout_centerHorizontal="true" />
-
+-->
 
     <Chronometer
         android:layout_width="wrap_content"
@@ -36,36 +36,29 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit to Dropbox"
-        android:id="@+id/button"
-        android:background="#b6807771"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:layout_below="@+id/buttonstop"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="stop"
-        android:id="@+id/buttonstop"
-        android:layout_above="@+id/settingbutton"
-        android:layout_centerHorizontal="true" />
 
     <!--
-    <ImageButton
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gif_button"
-        android:layout_alignBottom="@+id/buttonstart"
-        android:layout_alignRight="@+id/settingbutton"
-        android:layout_alignEnd="@+id/settingbutton"
+        android:layout_below="@+id/chronometer"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/buttonstart" />
+        android:layout_above="@+id/buttonstart"
+        android:layout_alignRight="@+id/settingbutton"
+        android:layout_alignEnd="@+id/settingbutton" />
 -->
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonstart"
+        android:layout_alignRight="@+id/settingbutton"
+        android:layout_alignEnd="@+id/settingbutton"
+        android:background="@android:color/transparent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/chronometer"
+        android:layout_above="@+id/settingbutton" />
 </RelativeLayout>

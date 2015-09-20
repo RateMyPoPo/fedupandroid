@@ -50,8 +50,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.facebook.FacebookSdk;
-
 public class Upload extends AppCompatActivity {
     final static private String APP_KEY = "rnizd2wt4vhv4cn";
     final static private String APP_SECRET = "k8exfknbce45n5g";
@@ -61,7 +59,6 @@ public class Upload extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
-        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_button);
 
         AppKeyPair appKeys = new AppKeyPair(APP_KEY, APP_SECRET);

@@ -12,4 +12,5 @@
     <string name="title_activity_splash">splash</string>
     <string name="title_activity_gif_movie_view">GifMovieView</string>
     <string name="title_activity_gif_view">GifView</string>
+    <string name="title_activity_dropbox">dropbox</string>
 </resources>

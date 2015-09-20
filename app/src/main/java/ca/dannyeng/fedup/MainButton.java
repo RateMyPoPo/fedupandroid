@@ -2,6 +2,7 @@ package ca.dannyeng.fedup;
 
 import android.app.Application;
 import android.content.Intent;
+import android.media.Image;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,12 +18,16 @@ import android.widget.Toast;
 import android.os.Environment;
 import android.media.MediaPlayer;
 import android.util.Log;
+import android.content.Intent;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.UUID;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+
+
+import android.widget.ImageView;
 
 import java.io.File;
 
@@ -33,23 +38,27 @@ public class MainButton extends AppCompatActivity {
     private MediaRecorder mRecorder;
     private Boolean record = true;
 
+    boolean timerStarted;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_button);
-
+        timerStarted = false;
         final Chronometer myChronometer = (Chronometer)findViewById(R.id.chronometer);
-        ImageButton buttonstart = (ImageButton)findViewById(R.id.buttonstart);
-        Button buttonStop = (Button)findViewById(R.id.buttonstop);
+        //ImageButton buttonstart = (ImageButton)findViewById(R.id.buttonstart);
 
         /*
+        ImageView gif = (ImageView) findViewById(R.id.gif_button);
+        Ion.with(gif).load("http://i.imgur.com/LJVyRHm.gif");
+        */
+
         File file = new File("dopedpg.gif");
         String filePath = file.getAbsolutePath();
 
-        ImageButton buttonGif = (ImageButton) findViewById(R.id.gif_button);
-        Glide.with(this).load("http://imgur.com/LJVyRHm").into(buttonGif);
-        */
+        ImageButton buttonstart = (ImageButton) findViewById(R.id.buttonstart);
+        Glide.with(this).load("http://i.imgur.com/LJVyRHm.gif").into(buttonstart);
 
         //title button that brings you to the settings page
         Button pushsettingbutton = (Button) findViewById(R.id.settingbutton);
@@ -61,15 +70,6 @@ public class MainButton extends AppCompatActivity {
             }
         });
 
-        //submit to dropbox button
-        Button dropboxbutton = (Button) findViewById(R.id.button);
-        dropboxbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i3 = new Intent(getApplicationContext(), Upload.class);
-                startActivity(i3);
-            }
-        });
 
         //audio record button
         ImageButton recordButton = (ImageButton)findViewById(R.id.buttonstart);
@@ -77,6 +77,18 @@ public class MainButton extends AppCompatActivity {
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (!timerStarted) {
+                    myChronometer.setBase(SystemClock.elapsedRealtime());
+                    myChronometer.start();
+                    timerStarted = true;
+                }
+                else {
+
+                    myChronometer.stop();
+                    timerStarted = false;
+
+                }
 
                 if(record){
                     CharSequence text = "Recording started";
@@ -114,10 +126,15 @@ public class MainButton extends AppCompatActivity {
                     mRecorder.reset();
                     mRecorder.release();
                     mRecorder = null;
+
+                    // Start main activity
+                    Intent intent = new Intent(MainButton.this, dropbox.class);
+                    MainButton.this.startActivity(intent);
                 }
                 record = !record;
 
             }
+
         });
 
         //title button that brings you to the settings page
