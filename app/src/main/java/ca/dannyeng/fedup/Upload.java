@@ -50,15 +50,18 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.facebook.FacebookSdk;
+
 public class Upload extends AppCompatActivity {
-    final static private String APP_KEY = "ozpikev4q244m1o";
-    final static private String APP_SECRET = "geutw4qniw71iyh";
+    final static private String APP_KEY = "rnizd2wt4vhv4cn";
+    final static private String APP_SECRET = "k8exfknbce45n5g";
     private DropboxAPI<AndroidAuthSession> mDBApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_button);
 
         AppKeyPair appKeys = new AppKeyPair(APP_KEY, APP_SECRET);
@@ -122,18 +125,14 @@ public class Upload extends AppCompatActivity {
                 FileInputStream fis = new FileInputStream(tmpFile);
                 Entry newEntry = mDBApi.putFile(file_name[0], fis, tmpFile.length(), null, null);
                 fis.close();
-                firebase.child("3").child("file_name").setValue(file_name[0]);
 
                 //get Geolocation
                 LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                 String locationProvider = LocationManager.NETWORK_PROVIDER;
                 Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
-                firebase.child("3").child("longitude").setValue(lastKnownLocation.getLongitude());
-                firebase.child("3").child("latitude").setValue(lastKnownLocation.getLatitude());
 
                 //get Timestamp
                 long unixTime = System.currentTimeMillis() / 1000L;
-                firebase.child("3").child("timestamp").setValue(unixTime);
 
                 //store data
                 HttpClient client = new DefaultHttpClient();
@@ -154,7 +153,13 @@ public class Upload extends AppCompatActivity {
                 httpPost.setHeader("Content-type", "application/json");
 
                 HttpResponse response = client.execute(httpPost);
-                sendSMS("6138180682", "HELP!!!");
+
+                firebase.child(mApp.getId()).child("file_name").setValue(file_name[0]);
+                firebase.child(mApp.getId()).child("longitude").setValue(lastKnownLocation.getLongitude());
+                firebase.child(mApp.getId()).child("latitude").setValue(lastKnownLocation.getLatitude());
+                firebase.child(mApp.getId()).child("timestamp").setValue(unixTime);
+
+                sendSMS("6138180682", "YOOO HELP A BROTHA OUT!");
 
             } catch (DropboxUnlinkedException e) {
                 Log.e("DbExampleLog", "User has unlinked.");
@@ -169,7 +174,6 @@ public class Upload extends AppCompatActivity {
             }
             return 0l;
         }
-
 
         protected void onPostExecute(Long result) {
             loggedIn();

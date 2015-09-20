@@ -94,6 +94,9 @@ public class login extends AppCompatActivity {
                 EditText usernameET = (EditText) findViewById(R.id.editText2);
                 String username = usernameET.getText().toString();
                 if(username.equals("")){
+                    MyApp mApp = ((MyApp)getApplication());
+                    mApp.setUsername("yang.kevvy@gmail.com");
+                    mApp.setId("1");
                     loggedIn();
                     return;
                 }

@@ -49,27 +49,7 @@ public class MainButton extends AppCompatActivity {
 
         ImageButton buttonGif = (ImageButton) findViewById(R.id.gif_button);
         Glide.with(this).load("http://imgur.com/LJVyRHm").into(buttonGif);
-*/
-        buttonstart.setOnClickListener(new Button.OnClickListener(){
-
-
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                myChronometer.setBase(SystemClock.elapsedRealtime());
-                myChronometer.start();
-            }
-        });
-
-        buttonStop.setOnClickListener(new Button.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                myChronometer.stop();
-
-            }});
+        */
 
         //title button that brings you to the settings page
         Button pushsettingbutton = (Button) findViewById(R.id.settingbutton);
@@ -103,14 +83,16 @@ public class MainButton extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(getApplicationContext(), text, duration);
                     toast.show();
+                    myChronometer.setBase(SystemClock.elapsedRealtime());
+                    myChronometer.start();
                     SecureRandom random = new SecureRandom();
                     String uuid = new BigInteger(130, random).toString(32);
-                    String mFileName = uuid+"_test.3gp";
+                    String mFileName = uuid+"_test.mp3";
                     MyApp mApp = ((MyApp)getApplication());
                     mApp.setFilename(mFileName);
                     mRecorder = new MediaRecorder();
                     mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-                    mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+                    mRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
                     Log.e("LINK", "/storage/sdcard0/" + mFileName);
                     mRecorder.setOutputFile("/storage/sdcard0/" + mFileName);
                     mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
@@ -127,6 +109,7 @@ public class MainButton extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(getApplicationContext(), text, duration);
                     toast.show();
+                    myChronometer.stop();
                     mRecorder.stop();
                     mRecorder.reset();
                     mRecorder.release();
