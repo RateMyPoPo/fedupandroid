@@ -2,6 +2,7 @@
 <items version="2" >
 
     <item
+<<<<<<< HEAD
         jar="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/libs/internal_impl-22.1.1.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -84,6 +85,13 @@
         revision="22.0.1"
         sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
         <dex dex="/Users/Kevin/FedUp/fedupandroid/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2-f7f493924ce461c8b2fd190d901d5efc3e884cd9.jar" />
+=======
+        jar="/Users/dannyeng/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.6.1/86b122e640af09b0723e1fa44083c354ba6d9089/glide-3.6.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="86b122e640af09b0723e1fa44083c354ba6d9089">
+        <dex dex="/Users/dannyeng/AndroidStudioProjects/fedupandroid/app/build/intermediates/pre-dexed/debug/glide-3.6.1-1228930790d087c1dc045f33ad4ee0a347db24e2.jar" />
+>>>>>>> master
     </item>
 
 </items>

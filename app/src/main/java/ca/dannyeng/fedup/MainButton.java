@@ -21,7 +21,10 @@ import android.util.Log;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.UUID;
+import android.widget.TextView;
+import com.bumptech.glide.Glide;
 
+import java.io.File;
 
 import com.firebase.client.Firebase;
 
@@ -35,6 +38,38 @@ public class MainButton extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_button);
+
+        final Chronometer myChronometer = (Chronometer)findViewById(R.id.chronometer);
+        ImageButton buttonstart = (ImageButton)findViewById(R.id.buttonstart);
+        Button buttonStop = (Button)findViewById(R.id.buttonstop);
+
+        /*
+        File file = new File("dopedpg.gif");
+        String filePath = file.getAbsolutePath();
+
+        ImageButton buttonGif = (ImageButton) findViewById(R.id.gif_button);
+        Glide.with(this).load("http://imgur.com/LJVyRHm").into(buttonGif);
+*/
+        buttonstart.setOnClickListener(new Button.OnClickListener(){
+
+
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                myChronometer.setBase(SystemClock.elapsedRealtime());
+                myChronometer.start();
+            }
+        });
+
+        buttonStop.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                myChronometer.stop();
+
+            }});
 
         //title button that brings you to the settings page
         Button pushsettingbutton = (Button) findViewById(R.id.settingbutton);
@@ -57,7 +92,7 @@ public class MainButton extends AppCompatActivity {
         });
 
         //audio record button
-        ImageButton recordButton = (ImageButton)findViewById(R.id.startbutton);
+        ImageButton recordButton = (ImageButton)findViewById(R.id.buttonstart);
 
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override

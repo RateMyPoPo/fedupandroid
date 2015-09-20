@@ -58,6 +58,12 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            android:name=".GifMovieView"
+            android:label="@string/title_activity_gif_movie_view" >
+        </activity>
+        <activity
+            android:name=".GifView"
+            android:label="@string/title_activity_gif_view" >
         </activity>
     </application>
 

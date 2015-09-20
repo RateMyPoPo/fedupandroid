@@ -15,6 +15,30 @@ public class MainActivity extends AppCompatActivity {
     private static String TAG = MainActivity.class.getName();
     private static long SLEEP_TIME = 3;    // Sleep for some time
 
+    //GifView gifView;
+    /*
+
+    public class MainActivity extends ActionBarActivity {
+
+	TextView textViewInfo;
+	GifView gifView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        gifView = (GifView) findViewById(R.id.gif_view);
+        textViewInfo = (TextView) findViewById(R.id.textinfo);
+
+        String stringInfo = "";
+        stringInfo += "Duration: " + gifView.getMovieDuration() + "\n";
+        stringInfo += "W x H: " + gifView.getMovieWidth() + " x " + gifView.getMovieHeight() + "\n";
+
+        textViewInfo.setText(stringInfo);
+    }
+}
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
 
         // Start timer and launch main activity
         IntentLauncher launcher = new IntentLauncher();
@@ -65,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 // Sleeping
-                Thread.sleep(SLEEP_TIME*500);
+                Thread.sleep(SLEEP_TIME*1000);
             } catch (Exception e) {
                 Log.e(TAG, e.getMessage());
             }
