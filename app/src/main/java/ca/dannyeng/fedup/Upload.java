@@ -156,7 +156,7 @@ public class Upload extends AppCompatActivity {
                 firebase.child(mApp.getId()).child("latitude").setValue(lastKnownLocation.getLatitude());
                 firebase.child(mApp.getId()).child("timestamp").setValue(unixTime);
 
-                sendSMS("6138180682", "YOOO HELP A BROTHA OUT!");
+
 
             } catch (DropboxUnlinkedException e) {
                 Log.e("DbExampleLog", "User has unlinked.");
@@ -173,18 +173,15 @@ public class Upload extends AppCompatActivity {
         }
 
         protected void onPostExecute(Long result) {
-            loggedIn();
+            returnToMain();
         }
     }
 
-    private void loggedIn() {
+    private void returnToMain() {
         Intent i2 = new Intent(getApplicationContext(), MainButton.class);
         startActivity(i2);
     }
 
-    private void sendSMS(String phoneNumber, String message) {
-        SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(phoneNumber, null, message, null, null);
-    }
+
 
 }

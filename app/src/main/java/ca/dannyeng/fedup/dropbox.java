@@ -1,9 +1,14 @@
 package ca.dannyeng.fedup;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 public class dropbox extends AppCompatActivity {
 
@@ -11,6 +16,24 @@ public class dropbox extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dropbox);
+
+
+        ImageButton dropboxbutton = (ImageButton) findViewById(R.id.imageButton);
+        dropboxbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i3 = new Intent(getApplicationContext(), Upload.class);
+                startActivity(i3);
+            }
+        });
+
+        Button emergencyButton = (Button) findViewById(R.id.emergencybutton);
+        emergencyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendSMS("6138180682", "YOOO HELP A BROTHA OUT!");
+            }
+        });
     }
 
     @Override
@@ -33,5 +56,10 @@ public class dropbox extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void sendSMS(String phoneNumber, String message) {
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(phoneNumber, null, message, null, null);
     }
 }
